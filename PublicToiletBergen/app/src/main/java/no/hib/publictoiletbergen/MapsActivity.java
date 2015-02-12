@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity  { //Resource for GPS: http://www.codeproject.com/Tips/678431/Example-of-Using-Google-Maps-Service-and-GPS-in-An
-    public GoogleMap mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap(); // Might be null if Google Play services APK is not available.
+    public GoogleMap mMap; // = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap(); // Might be null if Google Play services APK is not available.
 /* first try, was outdated, but can't be too sure
     LocationRequest locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
@@ -51,7 +51,7 @@ public class MapsActivity extends FragmentActivity  { //Resource for GPS: http:/
             double latitude = gpsLocation.getLatitude();
         }
 
-       // setUpMap(); dunno if needed
+//        setUpMap();  dunno if needed
 
 
 
@@ -98,8 +98,7 @@ public class MapsActivity extends FragmentActivity  { //Resource for GPS: http:/
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                new LatLng(60.397237, 5.308044), 16));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(60.397237, 5.308044), 16));
 
         // You can customize the marker image using images bundled with
         // your app, or dynamically generated bitmaps.
