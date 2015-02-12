@@ -1,15 +1,27 @@
 package no.hib.publictoiletbergen;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.location.Location;
 import android.location.LocationManager;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 /**
  * Created by Steingalen on 11.02.2015.
  */
 public class GpsLocation {
+
+    MapsActivity getMarker;
+    public PolylineOptions mrkr;
 
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
     private static final float MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
@@ -19,6 +31,10 @@ public class GpsLocation {
     private double latitude;
     private double longitude;
     private Location location;
+    private Location clickLocation;
+    PolylineOptions polylineOptions = new PolylineOptions();
+
+
 
     public GpsLocation(Context mContext, TextView gpsStatusTextView) {
         this.mContext = mContext;
@@ -85,6 +101,29 @@ public class GpsLocation {
 
         return location;
     }
+
+
+
+/*
+    GoogleMap.OnMapLongClickListener myOnMapLongClick =
+            new GoogleMap.OnMapLongClickListener(){
+
+                @Override
+                public void onMapLongClick(LatLng point) {
+                    getMarker.mMap.addMarker(new MarkerOptions()
+                            .position(point)
+                            .title(point.toString()));
+
+                    clickLocation = getMarker.mMap.getMyLocation();
+                        polylineOptions.add(point);
+                        polylineOptions.add(
+                                new LatLng(clickLocation.getLatitude(), clickLocation.getLongitude()));
+                        getMarker.mMap.addPolyline(polylineOptions);
+                    }
+
+
+            };*/
+
 
     public boolean getCanGetLocation() {
         return canGetLocation;
